@@ -1,4 +1,4 @@
-1. Write a Python function that reverses a string.
+> Write a Python function that reverses a string.
 
 ```python
 my_string = "hello"
@@ -19,7 +19,7 @@ inverted_string = my_string[::-1]
 
 ```
 
-2. Write a JavaScript function that checks if a number is even.
+> Write a JavaScript function that checks if a number is even.
 
 ```ts
 function is_even(number: number):string {
@@ -29,7 +29,7 @@ function is_even(number: number):string {
 }
 ```
 
-3. Implement a Python function that returns the maximum number in a list.
+> Implement a Python function that returns the maximum number in a list.
 
 ```python
 number_list [42, 30, 4, 100]
@@ -47,15 +47,26 @@ print(max_value)
 
 ```
 
-4. Implement a JS function that filters an array of numbers greater than 10.
-5. Write a Python function that counts the vowels in a string.
-6. Write a JS function that removes duplicates from an array.
-7. Write a Python class representing a `User` with `name` and `email`.
-8. Implement a simple linked list in Python or JS.
-9.  Write a function that returns the intersection of two arrays.
-10. Implement a recursive function in Python that calculates factorial.
-11. Implement a binary search function in JS.
-12. Write a function that checks if a string is a palindrome.
-13. Implement a simple LRU cache in Python.
-14. Given a list of numbers, return a sorted version (no built-ins).
-15. Solve the two-sum problem in both Python and JS.
+> Implement a JS function that filters an array of numbers greater than 10.
+
+> Write a Python function that counts the vowels in a string.
+
+> Write a JS function that removes duplicates from an array.
+
+> Write a Python class representing a `User` with `name` and `email`.
+
+> Implement a simple linked list in Python or JS.
+
+>  Write a function that returns the intersection of two arrays.
+
+>  Implement a recursive function in Python that calculates factorial.
+
+>  Implement a binary search function in JS.
+
+>  Write a function that checks if a string is a palindrome.
+
+>  Implement a simple LRU cache in Python.
+
+>  Given a list of numbers, return a sorted version (no built-ins).
+
+>  Solve the two-sum problem in both Python and JS.
