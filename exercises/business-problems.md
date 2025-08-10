@@ -57,11 +57,71 @@ def find_common_ids(list1, list2):
 
 For API slowdowns, first check database performance (queries, indexes, connection pools), then profile the backend (Python: cProfile/py-spy, Node: clinic.js/--inspect), optimize bottlenecks (caching, serialization, async operations), and verify infrastructure; in Python watch for CPU-bound tasks and consider ASGI scaling, while in Node monitor event loop lag and memory leaks due to its single-threaded nature, with both requiring analysis of external calls and middleware chains.
 
-> A sales dashboard needs to show total sales per product category. Write pseudocode to group sales by category and sum the totals.
+> a sales dashboard needs to show total sales per product category. write pseudocode to group sales by category and sum the totals.
+
+Take a list of sales transactions (each with product category and amount)
+Group transactions by their category
+Sum the amounts within each group
+Return the aggregated totals per category
+
+```python
+
+sales = [
+    {'category': 'Electronics', 'amount': 100},
+    {'category': 'Clothing', 'amount': 50},
+    {'category': 'Electronics', 'amount': 200}
+]
+
+# plain python
+
+def aggregation(sales_data):
+    category_totals = {}
+    for sale in sales_data:
+        category = sale['category']
+        amount = sale['amount']
+        if category not in category_totals:
+            category_totals[category] = 0
+        category_totals[category] += amount
+    return category_totals
+
+# pandas
+
+import pandas as pd
+def aggregate_sales_pandas(sales_date)
+    df = pd.DataFrame(sales_data)
+    return df.groupby('category')['amount'].sum().to_dict()
+
+
+```
 
 > A user reports that their profile picture disappears randomly. How would you investigate whether this is a frontend or backend issue?
 
+I would make a script to call the profile pictures endpoint a hundred times. if its faulty i would look for race conditions of backend. if it delivers all the times, i would test on incodignito mode on cosole (no extensions). then console and network tab on browser to see ifs properly making requests and loading. if not i would check the state management on the given framework.
+
 > Given a list of invoices with amounts and dates, write pseudocode to return only invoices from the current month.
+
+```
+
+sql
+
+SELECT * 
+FROM invoices
+WHERE EXTRACT(MONTH FROM date) = EXTRACT(MONTH FROM CURRENT_DATE)
+  AND EXTRACT(YEAR FROM date) = EXTRACT(YEAR FROM CURRENT_DATE);
+
+
+mongodb
+
+{
+  $expr: {
+    $and: [
+      { $eq: [{ $month: "$date" }, { $month: new Date() }] },
+      { $eq: [{ $year: "$date" }, { $year: new Date() }] }
+    ]
+  }
+}
+
+```
 
 > A ride-sharing app wants to find the driver with the most completed trips in the past week. How would you design a query or algorithm for this?
 
