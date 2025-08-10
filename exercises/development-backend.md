@@ -1,4 +1,4 @@
-> Create a FastAPI route that returns “Hello World”.
+# Create a FastAPI route that returns “Hello World”.
 
 ```python
 from fastapi import FastAPI
@@ -12,7 +12,7 @@ def hello_world():
 ```
 
 
->  Define a Pydantic model with fields: `name`, `email`, `created_at`.
+#  Define a Pydantic model with fields: `name`, `email`, `created_at`.
 
 ```python
 from pydantic import BaseModel
@@ -25,7 +25,7 @@ class User(BaseModel):
 
 ```
 
-> Create a POST endpoint that receives a JSON body and returns it.
+# Create a POST endpoint that receives a JSON body and returns it.
 
 ```python
 from fastapi import FastAPI
@@ -39,7 +39,7 @@ def receive_json(data:dict):
 ```
 
 
-> Connect FastAPI to MongoDB using `pymongo`.
+# Connect FastAPI to MongoDB using `pymongo`.
 
 ```python
 from fastapi import FastAPI
@@ -63,24 +63,24 @@ def test_mongodb_connection():
 ```
 
 
-> Insert a document into a MongoDB collection from an API route.
+# Insert a document into a MongoDB collection from an API route.
 
-> Create a GET route to retrieve a document by `ObjectId`.
+# Create a GET route to retrieve a document by `ObjectId`.
 
-> Update a field in a document using a PUT route.
+# Update a field in a document using a PUT route.
 
-> Create a DELETE endpoint to remove a document by ID.
+# Create a DELETE endpoint to remove a document by ID.
 
-> Add pagination (limit + offset) to a GET endpoint.
+# Add pagination (limit + offset) to a GET endpoint.
 
-> Write a route that returns only documents where `status = "approved"`.
+# Write a route that returns only documents where `status = "approved"`.
 
-> Write an endpoint that aggregates documents and returns the count per status.
+# Write an endpoint that aggregates documents and returns the count per status.
 
-> Create an endpoint to upload a list of items at once (bulk insert).
+# Create an endpoint to upload a list of items at once (bulk insert).
 
-> Build a logging function that stores process logs in a `log` field (array).
+# Build a logging function that stores process logs in a `log` field (array).
 
-> Create a schema for a `pin` object with title, image_url, and match_score.
+# Create a schema for a `pin` object with title, image_url, and match_score.
 
-> Secure an endpoint using an API key or token-based auth.
+# Secure an endpoint using an API key or token-based auth.

@@ -3,7 +3,7 @@ AI-driven platform for fetching, evaluating, and displaying images that match us
 
 ## deploy
 
-> docker setup
+# docker setup
 
 ```yml
 version '3.8'
@@ -37,7 +37,7 @@ networks:
 
 ## backend
 
-> initial commands
+# initial commands
 ```
 python3 -m venv venv
 source venv/bin/activate
@@ -46,7 +46,7 @@ pip install fastapi uvicorn pymongo openai playwright pydantic-ai pydantic
 pip freeze &gt; requirements.txt
 ```
 
-> docker setup
+# docker setup
 
 ```docker
 FROM python:3.11 as builder
@@ -68,7 +68,7 @@ EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
 ```
 
-> server
+# server
 
 ```py
 from fastapi import FastAPI
@@ -100,7 +100,7 @@ if __name__ == "__main__":
 
 ```
 
-> api
+# api
 ```py
 from fastapi import APIRouter, HTTPException, BackgroundTasks
 from pydantic import BaseModel
@@ -142,7 +142,7 @@ async def create_prompt(prompt_request: PromptRequest, background_tasks: Backgro
 
 ```
 
-> pydantic-ai
+# pydantic-ai
 
 ```py
 from pydantic import BaseModel, Field
@@ -185,7 +185,7 @@ npm create vite@latest client -- --template react-ts
 npm, install tailwind
 ```
 
-> docker setup
+# docker setup
 ```
 FROM node:18-alpine
 WORKDIR /app
@@ -206,7 +206,7 @@ CMD ["serve", "-s", "dist" , "-l", "3000"]
 
 ```
 
-> api 
+# api 
 
 ```js
 import axios from 'axios'
@@ -215,7 +215,7 @@ export const baseUrl = 'http://localhost:1340/api/'
 
 const api = axios.create({ baseUrl });
 
-api.interceptors.request.use(config => {
+api.interceptors.request.use(config =# {
     config.headers = config.headers || {};
 
     const userString = localStorage.getItem('user')
@@ -234,7 +234,7 @@ api.interceptors.request.use(config => {
 
 ```
 
-> app
+# app
 
 ```ts
 import {useState, useEffect } from 'react'
@@ -248,7 +248,7 @@ export default function ImageReview({promptId }: ImageReviewProps) {
 const [pins, setPins] = useState<Pin[]>([])
 const [loading, setLoading] = useState(true)
 
-useEffect(() => {
+useEffect(() =# {
 const fetchPins = async() =>{
     try {
         const response = await APIService.getPins(promptId)

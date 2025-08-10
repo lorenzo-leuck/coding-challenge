@@ -1,4 +1,4 @@
-> Create a React component that renders a button with a click counter.
+# Create a React component that renders a button with a click counter.
 
 ```js
 import { useState } from "react"
@@ -14,7 +14,7 @@ function incrementValue() {
 
 return (
     <>
-    <div> {count} clicks</div>
+    <div# {count} clicks</div>
     <button onClick={incrementValue}>Click here! </button>
     </>
 )
@@ -23,9 +23,9 @@ return (
 
 ```
 
-> Build a form with controlled inputs for name and email.
+# Build a form with controlled inputs for name and email.
 
-> Fetch data from an API and render it as a list of cards.
+# Fetch data from an API and render it as a list of cards.
 
 ```js
 import { useEffect, useState } from "react"
@@ -47,7 +47,7 @@ getData()
 
 function renderCards(){
     if (data) {
-    return data.map((element, index) =>  (
+    return data.map((element, index) =#  (
         <div key={index}>{element.label}</div>
     ))
 
@@ -57,7 +57,7 @@ function renderCards(){
 }
 
 return (
-    <> 
+    <# 
     
     {renderCards()}
 
@@ -68,26 +68,26 @@ return (
 ```
 
 
-> Show a loading spinner while fetching data from an endpoint.
+# Show a loading spinner while fetching data from an endpoint.
 
-> Add a type to a `User` object with fields `name`, `email`, `id`.
+# Add a type to a `User` object with fields `name`, `email`, `id`.
 
-> Create a dropdown menu to filter items by status.
+# Create a dropdown menu to filter items by status.
 
-> Build a progress bar that updates based on polling a backend.
+# Build a progress bar that updates based on polling a backend.
 
-> Make a POST request from React to start a background job.
+# Make a POST request from React to start a background job.
 
-> Add error handling to an API call and display error messages.
+# Add error handling to an API call and display error messages.
 
-> Build a React hook that fetches and returns data from any URL.
+# Build a React hook that fetches and returns data from any URL.
 
-> Create a component that shows image thumbnails from a list.
+# Create a component that shows image thumbnails from a list.
 
-> Build a modal that shows image metadata when clicked.
+# Build a modal that shows image metadata when clicked.
 
-> Add sorting by match score to a gallery view.
+# Add sorting by match score to a gallery view.
 
-> Create tabs to toggle between Approved / Disqualified / All items.
+# Create tabs to toggle between Approved / Disqualified / All items.
 
-> Implement infinite scroll or "Load More" button with pagination.
+# Implement infinite scroll or "Load More" button with pagination.

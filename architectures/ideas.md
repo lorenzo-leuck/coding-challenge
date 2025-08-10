@@ -87,13 +87,13 @@ import { useWebSocket } from '../hooks/useWebSocket'
 // WebSocket connection for real-time updates
 const socket = useWebSocket('ws://localhost:8000/ws/moderation')
 
-useEffect(() => {
+useEffect(() =# {
   if (!socket || !contentId) return
   
   // Listen for updates on this specific content ID
   socket.send(JSON.stringify({ action: 'subscribe', content_id: contentId }))
   
-  socket.addEventListener('message', (event) => {
+  socket.addEventListener('message', (event) =# {
     const data = JSON.parse(event.data)
     if (data.content_id === contentId) {
       setStatus(data.status)
@@ -103,7 +103,7 @@ useEffect(() => {
     }
   })
   
-  return () => {
+  return () =# {
     socket.send(JSON.stringify({ action: 'unsubscribe', content_id: contentId }))
   }
 }, [socket, contentId])
@@ -116,7 +116,7 @@ useEffect(() => {
         <textarea 
           className="w-full p-2 border rounded" 
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={(e) =# setContent(e.target.value)}
           placeholder="Enter content to moderate"
         />
         
@@ -271,7 +271,7 @@ class DocumentPipeline:
 import { useDocumentPolling } from '../hooks/useDocumentPolling'
 
 // Document processing visualization
-const renderProcessingSteps = () => {
+const renderProcessingSteps = () =# {
   const steps = [
     { id: 'uploaded', label: 'Uploaded' },
     { id: 'preprocessing', label: 'Preprocessing' },
@@ -280,12 +280,12 @@ const renderProcessingSteps = () => {
     { id: 'completed', label: 'Completed' }
   ]
   
-  const currentStepIndex = steps.findIndex(step => step.id === status)
+  const currentStepIndex = steps.findIndex(step =# step.id === status)
   
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between w-full">
-        {steps.map((step, index) => (
+        {steps.map((step, index) =# (
           <div key={step.id} className="flex flex-col items-center">
             <div 
               className={`w-8 h-8 rounded-full flex items-center justify-center
@@ -310,7 +310,7 @@ const renderProcessingSteps = () => {
 }
 
 // Document preview with extracted data display
-const renderExtractedData = () => (
+const renderExtractedData = () =# (
   <div className="border rounded-lg p-4">
     <h3 className="text-lg font-medium mb-4">Extracted Data</h3>
     
@@ -323,7 +323,7 @@ const renderExtractedData = () => (
       </div>
     )}
     
-    {document.fields?.map((field, index) => (
+    {document.fields?.map((field, index) =# (
       <div key={index} className="border-b pb-3 last:border-b-0">
         <div className="flex justify-between items-center">
           <span className="font-medium">{field.name}</span>
@@ -345,7 +345,7 @@ const renderExtractedData = () => (
 )
 
 // Document preview with page navigation
-const renderDocumentPreview = () => {
+const renderDocumentPreview = () =# {
   if (!document?.pages || document.pages.length === 0) {
     return <div className="text-center py-10">No preview available</div>
   }
@@ -356,14 +356,14 @@ const renderDocumentPreview = () => {
         <span>Page {document.currentPage} of {document.pages.length}</span>
         <div>
           <button 
-            onClick={() => document.prevPage()} 
+            onClick={() =# document.prevPage()} 
             disabled={document.currentPage === 1}
             className="px-2 py-1 mr-2 bg-white border rounded"
           >
             Previous
           </button>
           <button 
-            onClick={() => document.nextPage()} 
+            onClick={() =# document.nextPage()} 
             disabled={document.currentPage === document.pages.length}
             className="px-2 py-1 bg-white border rounded"
           >
@@ -383,7 +383,7 @@ const renderDocumentPreview = () => {
 }
 
 // Extracted data visualization
-const renderExtractedData = () => {
+const renderExtractedData = () =# {
   if (!document?.fields || document.fields.length === 0) {
     return <div className="text-center py-10">No data extracted yet</div>
   }
@@ -393,7 +393,7 @@ const renderExtractedData = () => {
       <div className="p-4">
         <h3 className="text-lg font-medium mb-2">Document Type: {document.document_type}</h3>
         <div className="grid grid-cols-2 gap-4">
-          {document.fields.map((field, index) => (
+          {document.fields.map((field, index) =# (
             <div key={index} className="border rounded p-3">
               <div className="text-sm text-gray-500">{field.name}</div>
               <div className="font-medium">{field.value}</div>
@@ -412,7 +412,7 @@ const renderExtractedData = () => {
   )
 }
 
-const DocumentTracker = () => {
+const DocumentTracker = () =# {
   const { documentId } = useParams<{ documentId: string }>()
   const { document, status, progress } = useDocumentPolling(documentId)
   const [activeTab, setActiveTab] = useState<'preview'|'data'|'raw'>('preview')
@@ -432,19 +432,19 @@ const DocumentTracker = () => {
         <div className="flex">
           <button
             className={`px-4 py-2 ${activeTab === 'preview' ? 'border-b-2 border-blue-500' : ''}`}
-            onClick={() => setActiveTab('preview')}
+            onClick={() =# setActiveTab('preview')}
           >
             Document Preview
           </button>
           <button
             className={`px-4 py-2 ${activeTab === 'data' ? 'border-b-2 border-blue-500' : ''}`}
-            onClick={() => setActiveTab('data')}
+            onClick={() =# setActiveTab('data')}
           >
             Extracted Data
           </button>
           <button
             className={`px-4 py-2 ${activeTab === 'raw' ? 'border-b-2 border-blue-500' : ''}`}
-            onClick={() => setActiveTab('raw')}
+            onClick={() =# setActiveTab('raw')}
           >
             Raw Text
           </button>
@@ -548,7 +548,7 @@ class KnowledgeGraph:
         visited_concepts = set()
         
         # Start from concepts user already knows
-        frontier = [concept_id for concept_id, level in user_knowledge.items() if level > 0.7]
+        frontier = [concept_id for concept_id, level in user_knowledge.items() if level # 0.7]
         
         while frontier:
             current = frontier.pop(0)
@@ -611,12 +611,12 @@ class AdaptiveContentGenerator:
 import { useLearningPath } from '../hooks/useLearningPath'
 
 // Learning path visualization with knowledge graph
-const renderLearningMap = () => {
+const renderLearningMap = () =# {
   return (
     <div className="relative py-10">
       {/* Path visualization with nodes and connections */}
       <svg className="w-full h-full" style={{ position: 'absolute', zIndex: 0 }}>
-        {learningPath.connections.map((connection, idx) => (
+        {learningPath.connections.map((connection, idx) =# (
           <line 
             key={idx}
             x1={connection.x1} 
@@ -632,7 +632,7 @@ const renderLearningMap = () => {
       
       {/* Concept nodes */}
       <div className="relative z-10 flex flex-wrap justify-center gap-4">
-        {learningPath.concepts.map((concept) => {
+        {learningPath.concepts.map((concept) =# {
           const conceptProgress = progress[concept.id] || 0
           const isCompleted = conceptProgress >= 1
           const isCurrent = currentConcept?.id === concept.id
@@ -678,7 +678,7 @@ const renderLearningMap = () => {
 }
 
 // Adaptive content based on learning style
-const renderAdaptiveContent = () => (
+const renderAdaptiveContent = () =# (
   <div className="prose max-w-none">
     {currentConcept.content ? (
       <div dangerouslySetInnerHTML={{ __html: currentConcept.content }} />
@@ -695,11 +695,11 @@ const renderAdaptiveContent = () => (
       <div className="mt-10 border-t pt-6">
         <h3 className="text-xl font-semibold mb-4">Check Your Understanding</h3>
         <div className="space-y-6">
-          {currentConcept.assessment.questions.map((question, idx) => (
+          {currentConcept.assessment.questions.map((question, idx) =# (
             <div key={idx} className="border rounded-lg p-4">
               <p className="font-medium mb-3">{question.text}</p>
               <div className="space-y-2">
-                {question.options.map((option, optIdx) => (
+                {question.options.map((option, optIdx) =# (
                   <div 
                     key={optIdx}
                     className={`p-3 border rounded ${question.selectedOption === optIdx ? 'bg-blue-50 border-blue-300' : ''}`}
@@ -724,13 +724,13 @@ const renderAdaptiveContent = () => (
         <div className="flex gap-4">
           <button
             className={`px-4 py-2 rounded ${viewMode === 'map' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100'}`}
-            onClick={() => setViewMode('map')}
+            onClick={() =# setViewMode('map')}
           >
             Learning Map
           </button>
           <button
             className={`px-4 py-2 rounded ${viewMode === 'content' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100'}`}
-            onClick={() => setViewMode('content')}
+            onClick={() =# setViewMode('content')}
             disabled={!currentConcept}
           >
             Current Concept
