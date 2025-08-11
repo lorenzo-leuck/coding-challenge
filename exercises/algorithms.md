@@ -38,13 +38,53 @@ sortNumbers(3)
 
 # Explain step-by-step how to find the greatest common divisor (GCD) of two numbers using the Euclidean algorithm.
 
+1. Start with two positive numbers A and B
+2. If B is 0 then the greatest common divisor is A and the algorithm stops. 
+3. Compute the remainder R when A is divided by B
+4. Set A = B and B = R
+5. Go back to the step 2
+
+
 # Write pseudocode that counts the number of vowels in a given string.
+
+function countVowels(string):
+vowelCount = 0 
+vowels = ['a','e','i','o','u']
+
+for each character in string:
+    if character.lower() is in vowels:
+        increment vowelCount by 1
+return vowelCount
+
 
 # Given two arrays of integers, write pseudocode that returns a new array with only the elements found in both arrays.
 
+
+function getIntersection(array1, array2):
+    intersection = []
+    for each element in array1:
+        if element in array2 AND element not in intersection:
+        intersection.push(element)
+    return intersection
+
 # Write pseudocode to find the largest and smallest number in an array in one pass.
 
+function FindMinMax(number_array):
+    min = number_array[0]
+    max = number_array[0]
+
+    for i in range(1, number_array.length):
+        min = number_array[i] < min ? number_array[i] : min
+        max = number_array[i] > max ? number_array[i] : max
+    
+    return min,max
+
+
 # Show two methods to swap `x` and `y` without using a temporary variable: arithmetic and bitwise XOR.
+x = x + y
+y = x - y
+x = x - y
+
 
 # Consider this pseudocode:
 ```
@@ -52,7 +92,9 @@ for i = 1 to n:
     for j = 1 to i:
         do O(1) work
 ```
-# What is the time complexity in Big-O notation? Explain your reasoning.
+What is the time complexity in Big-O notation? Explain your reasoning.
+
+The time complexity of the given pseudocode is O(n²). This is because the outer loop runs n times, and for each iteration i of the outer loop, the inner loop runs i times 
 
 #  Describe the preconditions for binary search and write pseudocode for it. What is its time complexity?
 
