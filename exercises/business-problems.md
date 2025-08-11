@@ -127,24 +127,74 @@ mongodb
 
 ```js
 
-/// data
+/// js
 
-const data = [
+const drives = [
     {
-    name: 'Marc Johnson',
+    driver_name: 'Marc Johnson',
     complete: false,
     date_created: 'utc',
     date_updated: 'utc'
     }
-    ...   
+    // ...   
 ]
 
-const completed_rides = data.map(())
 
+const oneWeekAgo = new Date();
+oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+const best_driver = Object.entries(
+  drives
+    .filter(drive => drive.complete && new Date(drive.date_updated) > oneWeekAgo)
+    .reduce((acc, drive) => {
+      acc[drive.driver_name] = (acc[drive.driver_name] || 0) + 1;
+      return acc;
+    }, {})
+)
+.sort(([,a], [,b]) => b - a)[0];
 
 ```
 
+```python
+# Python equivalent
+from datetime import datetime, timedelta
+from collections import Counter
 
+drives = [
+    {
+        'driver_name': 'Marc Johnson',
+        'complete': False,
+        'date_created': '2023-01-01T00:00:00Z',
+        'date_updated': '2023-01-01T00:00:00Z'
+    }
+    # ...
+]
+
+one_week_ago = datetime.now() - timedelta(weeks=1)
+
+completed_drives = [
+    drive for drive in drives
+    if drive['complete'] and datetime.fromisoformat(drive['date_updated'].replace('Z', '+00:00')) > one_week_ago
+]
+
+driver_counts = Counter(drive['driver_name'] for drive in completed_drives)
+
+best_driver = driver_counts.most_common(1)[0] if driver_counts else None
+
+one_week_ago = datetime.now() - timedelta(weeks=1)
+
+completed_drives = [
+    drive for drive in drives
+    if drive['complete'] and datetime.fromisoformat(drive['date_updated'].replace('Z', '+00:00')) > one_week_ago
+]
+
+driver_counts = Counter(drive['driver_name'] for drive in completed_drives)
+
+sorted_drivers = sorted(driver_counts.items(), key=lambda x: x[1], reverse=True)
+
+best_driver = sorted_drivers[0] if sorted_drivers else None
+
+```
 
 # The product manager wants to add “related products” suggestions. Explain the factors you’d consider before deciding how to implement it.
 
